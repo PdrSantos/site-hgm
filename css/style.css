@@ -208,11 +208,13 @@ button{ font-family: inherit; }
   position:absolute;
   inset:0;
   z-index:0;
+
   background: url("../assets/img/hero.png");
   background-size: cover;
   background-position: center;
-  filter: blur(2px);
-  transform: scale(1.08);
+
+  filter: blur(1px);
+  transform: scale(1.0);
 }
 .hero-overlay{
   position:absolute;
