@@ -1,8 +1,6 @@
-// ================== CONFIGURAÇÃO ==================
-const WHATSAPP_NUMBER = "5518997207032"; // Troque para o número real (ex: 5511999999999)
+const WHATSAPP_NUMBER = "5518997207032"; 
 const DEFAULT_MSG = "Olá! Quero uma simulação de consórcio com a HGM Investimentos.";
 
-// ================================================
 function buildWhatsAppLink(message) {
   const msg = encodeURIComponent(message || DEFAULT_MSG);
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
@@ -75,7 +73,7 @@ function setupActiveMenu() {
   sections.forEach((sec) => observer.observe(sec));
 }
 
-// ================== CATEGORIAS -> PRÉ PREENCHER FORM ==================
+// ================== CATEGORIAS ==================
 function setupCategoryButtons() {
   const cards = document.querySelectorAll(".category-card");
   const select = document.getElementById("categoria");
