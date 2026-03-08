@@ -314,6 +314,7 @@ button{font-family:inherit}
 
 .hero-right{
   width:100%;
+  max-width:100%;
 }
 
 .hero-video-card{
@@ -322,6 +323,8 @@ button{font-family:inherit}
   border-radius:var(--radius);
   box-shadow:var(--shadow2);
   overflow:hidden;
+  width:100%;
+  max-width:100%;
 }
 
 .hero-video-top{
@@ -378,9 +381,10 @@ button{font-family:inherit}
 .hero-video-wrap{
   width:100%;
   aspect-ratio:16 / 9;
-  min-height:230px;
+  min-height:auto;
   background:#000;
   display:flex;
+  overflow:hidden;
 }
 
 .hero-video{
@@ -731,11 +735,98 @@ button{font-family:inherit}
   opacity:.9;
 }
 
+/* celulares muito pequenos */
+@media (max-width: 479px){
+  .container{
+    width:min(1120px,94%);
+  }
+
+  .header-inner{
+    min-height:76px;
+    gap:8px;
+  }
+
+  .brand-logo{
+    height:48px;
+  }
+
+  .hero{
+    padding:26px 0 18px;
+  }
+
+  .hero-title{
+    max-width:100%;
+    font-size:clamp(1.85rem,9vw,2.6rem);
+    line-height:1;
+  }
+
+  .hero-text{
+    font-size:.95rem;
+  }
+
+  .hero-video-top{
+    padding:10px 12px;
+  }
+
+  .hero-video-title{
+    font-size:.92rem;
+  }
+
+  .hero-sound-btn{
+    width:100%;
+    min-height:42px;
+    font-size:.9rem;
+  }
+
+  .hero-video-wrap{
+    max-height:190px;
+  }
+
+  .hero-video-foot{
+    padding:10px 12px 12px;
+  }
+
+  .hero-video-hint{
+    font-size:.84rem;
+    line-height:1.4;
+  }
+
+  .trust-item{
+    padding:10px 12px;
+  }
+
+  .card-media{
+    height:180px;
+  }
+
+  .section{
+    padding:56px 0;
+  }
+}
+
 /* celulares médios */
 @media (min-width: 480px){
   .hide-xs{display:inline-flex}
   .brand-logo{height:60px}
-  .hero-video-wrap{min-height:260px}
+  .hero-video-wrap{max-height:220px}
+}
+
+/* até tablet pequeno */
+@media (max-width: 767px){
+  .hero-right{
+    width:100%;
+  }
+
+  .hero-video-card{
+    width:100%;
+    max-width:100%;
+  }
+
+  .hero-video-wrap{
+    width:100%;
+    aspect-ratio:16 / 9;
+    min-height:unset;
+  }
 }
 
 /* tablets */
@@ -785,6 +876,7 @@ button{font-family:inherit}
   }
 
   .hero-video-wrap{
+    max-height:none;
     min-height:340px;
   }
 
