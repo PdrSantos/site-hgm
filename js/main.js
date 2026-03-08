@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = "5518997207032"; 
+const WHATSAPP_NUMBER = "5518997207032";
 const DEFAULT_MSG = "Olá! Quero uma simulação de consórcio com a HGM Investimentos.";
 
 function buildWhatsAppLink(message) {
@@ -8,8 +8,7 @@ function buildWhatsAppLink(message) {
 
 function setWhatsAppLinks() {
   const link = buildWhatsAppLink(DEFAULT_MSG);
-  const ids = ["btnWhatsappTop", "btnWhatsappMobile", "btnWhatsappAbout", "btnWhatsappFooter", "whatsappFloat"];
-  ids.forEach((id) => {
+  ["btnWhatsappTop", "btnWhatsappMobile", "btnWhatsappAbout", "btnWhatsappFooter", "whatsappFloat"].forEach((id) => {
     const el = document.getElementById(id);
     if (el) el.href = link;
   });
@@ -20,7 +19,6 @@ function setYear() {
   if (el) el.textContent = new Date().getFullYear();
 }
 
-// ================== MENU MOBILE ==================
 function setupMobileMenu() {
   const burger = document.getElementById("burger");
   const menu = document.getElementById("mobileMenu");
@@ -47,13 +45,9 @@ function setupMobileMenu() {
   });
 }
 
-// ================== MENU ATIVO ==================
 function setupActiveMenu() {
   const links = Array.from(document.querySelectorAll(".nav-link"));
-  const sections = links
-    .map((a) => document.querySelector(a.getAttribute("href")))
-    .filter(Boolean);
-
+  const sections = links.map((a) => document.querySelector(a.getAttribute("href"))).filter(Boolean);
   if (!links.length || !sections.length) return;
 
   const activate = (id) => {
@@ -62,9 +56,7 @@ function setupActiveMenu() {
 
   const observer = new IntersectionObserver(
     (entries) => {
-      const visible = entries
-        .filter((e) => e.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      const visible = entries.filter((e) => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
       if (visible?.target?.id) activate(visible.target.id);
     },
     { threshold: [0.2, 0.35, 0.5], rootMargin: "-15% 0px -70% 0px" }
@@ -73,7 +65,6 @@ function setupActiveMenu() {
   sections.forEach((sec) => observer.observe(sec));
 }
 
-// ================== CATEGORIAS ==================
 function setupCategoryButtons() {
   const cards = document.querySelectorAll(".category-card");
   const select = document.getElementById("categoria");
@@ -91,7 +82,6 @@ function setupCategoryButtons() {
   });
 }
 
-// ================== SLIDER DE DEPOIMENTOS ==================
 function setupTestimonials() {
   const prev = document.getElementById("prevTestimonial");
   const next = document.getElementById("nextTestimonial");
@@ -102,10 +92,11 @@ function setupTestimonials() {
   const testimonials = [
     { text: "“Atendimento excelente. Explicou tudo com clareza e me ajudou a escolher o plano ideal.”", author: "— Cliente, SP" },
     { text: "“Transparência e acompanhamento. Me passou segurança para decidir.”", author: "— Cliente, Interior SP" },
-    { text: "“Simulação rápida e bem explicada. Recomendo para quem quer planejar.”", author: "— Cliente, MG" },
+    { text: "“Simulação rápida e bem explicada. Recomendo para quem quer planejar.”", author: "— Cliente, MG" }
   ];
 
   let i = 0;
+
   const render = () => {
     text.textContent = testimonials[i].text;
     author.textContent = testimonials[i].author;
@@ -127,7 +118,6 @@ function setupTestimonials() {
   }, 6500);
 }
 
-// ================== FORM VALIDAÇÃO + WHATSAPP ==================
 function setupForm() {
   const form = document.getElementById("simulationForm");
   const success = document.getElementById("formSuccess");
@@ -160,10 +150,22 @@ function setupForm() {
 
     let ok = true;
 
-    if (nome.length < 3) { setError("nome", "Informe seu nome completo."); ok = false; }
-    if (onlyDigits(whatsapp).length < 10) { setError("whatsapp", "Informe um WhatsApp válido com DDD."); ok = false; }
-    if (!isEmailValid(email)) { setError("email", "Informe um e-mail válido."); ok = false; }
-    if (!categoria) { setError("categoria", "Selecione uma categoria."); ok = false; }
+    if (nome.length < 3) {
+      setError("nome", "Informe seu nome completo.");
+      ok = false;
+    }
+    if (onlyDigits(whatsapp).length < 10) {
+      setError("whatsapp", "Informe um WhatsApp válido com DDD.");
+      ok = false;
+    }
+    if (!isEmailValid(email)) {
+      setError("email", "Informe um e-mail válido.");
+      ok = false;
+    }
+    if (!categoria) {
+      setError("categoria", "Selecione uma categoria.");
+      ok = false;
+    }
 
     if (!ok) return;
 
@@ -183,37 +185,19 @@ function setupForm() {
   });
 }
 
-// ================== HERO VÍDEO (autoplay + botão de som) ==================
 function setupHeroVideo() {
   const video = document.getElementById("heroVideo");
   const btn = document.getElementById("toggleSound");
   if (!video || !btn) return;
 
-  // Tenta iniciar com som
-  video.muted = false;
+  video.muted = true;
   video.volume = 1;
 
-  const tryPlayWithSound = async () => {
-    try {
-      await video.play();
-      // Se conseguiu tocar com som:
-      btn.classList.add("is-on");
-      btn.textContent = "Som ligado";
-      btn.setAttribute("aria-pressed", "true");
-    } catch (err) {
-      // Se o navegador bloquear autoplay com som:
-      video.muted = true;
-      try { await video.play(); } catch(e) {}
+  const playPromise = video.play();
+  if (playPromise && typeof playPromise.catch === "function") {
+    playPromise.catch(() => {});
+  }
 
-      btn.classList.remove("is-on");
-      btn.textContent = "Ativar som";
-      btn.setAttribute("aria-pressed", "false");
-    }
-  };
-
-  tryPlayWithSound();
-
-  // Botão alterna som (sempre funciona após clique)
   btn.addEventListener("click", async () => {
     const willUnmute = video.muted === true;
 
@@ -223,7 +207,7 @@ function setupHeroVideo() {
       btn.classList.add("is-on");
       btn.textContent = "Som ligado";
       btn.setAttribute("aria-pressed", "true");
-      try { await video.play(); } catch(e) {}
+      try { await video.play(); } catch (e) {}
     } else {
       video.muted = true;
       btn.classList.remove("is-on");
@@ -233,7 +217,6 @@ function setupHeroVideo() {
   });
 }
 
-// ================== INIT ==================
 document.addEventListener("DOMContentLoaded", () => {
   setYear();
   setWhatsAppLinks();
