@@ -1,402 +1,1042 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>HGM Investimentos | Consórcios</title>
-  <meta name="description" content="Consórcios com atendimento personalizado e transparência. Solicite sua simulação com a HGM Investimentos." />
-  <meta name="keywords" content="consórcio, investimentos, financiamento, crédito, hgm investimentos">
-  <meta name="author" content="HGM Investimentos">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>HGM Investimentos | Consórcios</title>
 
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" href="assets/img/logo_preta.png">
+    <meta
+        name="description"
+        content="HGM Investimentos. Consórcios para imóveis, automóveis, motos e veículos pesados com planejamento, transparência e atendimento personalizado."
+    >
+
+    <meta
+        name="keywords"
+        content="HGM Investimentos, consórcio, consórcio de imóveis, consórcio de carros, consórcio de motos, consórcio de pesados"
+    >
+
+    <meta name="author" content="HGM Investimentos">
+
+    <meta property="og:title" content="HGM Investimentos | Consórcios">
+    <meta
+        property="og:description"
+        content="Consórcios inteligentes para conquistar patrimônio com planejamento."
+    >
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="assets/img/logo_preta.png"
+    >
 </head>
+
 <body>
-  <header class="header" id="header">
-    <div class="container header-inner">
-      <a class="brand" href="#inicio" aria-label="Ir para o início">
-        <img class="brand-logo" src="assets/img/logo_preta.png" alt="HGM Investimentos">
-      </a>
 
-      <nav class="nav" aria-label="Menu principal">
-        <a class="nav-link" href="#inicio">Início</a>
-        <a class="nav-link" href="#consorcios">Consórcios</a>
-        <a class="nav-link" href="#como-funciona">Como funciona</a>
-        <a class="nav-link" href="#sobre">Sobre</a>
-        <a class="nav-link" href="#depoimentos">Depoimentos</a>
-        <a class="nav-link" href="#contato">Simulação</a>
-      </nav>
+    <!-- Header -->
+    <header class="site-header" id="site-header">
+        <div class="container header-inner">
 
-      <div class="header-actions">
-        <a class="btn btn-outline hide-sm" href="#contato">Simular</a>
-        <a class="btn btn-primary hide-xs" id="btnWhatsappTop" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
+            <a href="#inicio" class="brand" aria-label="HGM Investimentos - Início">
+                <img
+                    src="assets/img/logo_preta.png"
+                    alt="HGM Investimentos"
+                >
+            </a>
 
-        <button class="burger" id="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
+            <nav class="desktop-nav" aria-label="Navegação principal">
+                <a href="#inicio" class="nav-link active">Início</a>
+                <a href="#consorcios" class="nav-link">Consórcios</a>
+                <a href="#como-funciona" class="nav-link">Como funciona</a>
+                <a href="#sobre" class="nav-link">Sobre</a>
+                <a href="#depoimentos" class="nav-link">Depoimentos</a>
+                <a href="#contato" class="nav-link">Contato</a>
+            </nav>
 
-    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-      <div class="container mobile-menu-inner">
-        <a class="mobile-link" href="#inicio">Início</a>
-        <a class="mobile-link" href="#consorcios">Consórcios</a>
-        <a class="mobile-link" href="#como-funciona">Como funciona</a>
-        <a class="mobile-link" href="#sobre">Sobre</a>
-        <a class="mobile-link" href="#depoimentos">Depoimentos</a>
-        <a class="mobile-link" href="#contato">Simulação</a>
-        <a class="btn btn-primary mobile-cta" id="btnWhatsappMobile" href="#" target="_blank" rel="noreferrer">Falar no WhatsApp</a>
-      </div>
-    </div>
-  </header>
+            <div class="header-actions">
+                <a href="#contato" class="btn btn-dark btn-small">
+                    Simular
+                </a>
 
-  <main>
-    <section class="hero" id="inicio">
-      <div class="hero-bg" aria-hidden="true"></div>
-      <div class="hero-overlay" aria-hidden="true"></div>
-
-      <div class="container hero-inner">
-        <div class="hero-left">
-          <span class="pill">HGM Investimentos • Consórcios • Planejamento</span>
-
-          <h1 class="hero-title">
-            Consórcios inteligentes para conquistar patrimônio com planejamento.
-          </h1>
-
-          <p class="hero-text">
-            Atendimento personalizado para consórcios de <strong>imóveis</strong>, <strong>automóveis</strong>, <strong>motos</strong> e <strong>pesados</strong>.
-            Simule em poucos minutos com total transparência.
-          </p>
-
-          <div class="hero-cta">
-            <a class="btn btn-primary" href="#contato">Quero simular</a>
-            <a class="btn btn-outline" href="#consorcios">Ver opções</a>
-          </div>
-
-          <div class="trust">
-            <div class="trust-item">
-              <div class="trust-icon">✓</div>
-              <div>
-                <div class="trust-title">Sem juros</div>
-                <div class="trust-sub">Planejamento e disciplina</div>
-              </div>
+                <a
+                    href="#"
+                    class="header-whatsapp whatsapp-link"
+                    aria-label="Falar com a HGM pelo WhatsApp"
+                >
+                    <span class="whatsapp-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20.52 3.48A11.86 11.86 0 0 0 12.08 0C5.53 0 .2 5.33.2 11.89c0 2.1.55 4.15 1.6 5.96L.1 24l6.29-1.65a11.87 11.87 0 0 0 5.69 1.45h.01c6.55 0 11.88-5.33 11.88-11.89 0-3.17-1.23-6.15-3.45-8.43ZM12.09 21.8h-.01a9.86 9.86 0 0 1-5.02-1.38l-.36-.21-3.73.98 1-3.64-.23-.37a9.87 9.87 0 0 1-1.51-5.29C2.23 6.43 6.65 2 12.09 2c2.64 0 5.12 1.03 6.98 2.9a9.84 9.84 0 0 1 2.89 7c0 5.44-4.43 9.9-9.87 9.9Zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.64-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.21 5.09 4.5.71.31 1.26.5 1.69.64.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/>
+                        </svg>
+                    </span>
+                    WhatsApp
+                </a>
             </div>
 
-            <div class="trust-item">
-              <div class="trust-icon">✓</div>
-              <div>
-                <div class="trust-title">Transparência</div>
-                <div class="trust-sub">Clareza do início ao fim</div>
-              </div>
-            </div>
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                type="button"
+                aria-label="Abrir menu"
+                aria-expanded="false"
+                aria-controls="mobile-menu"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-            <div class="trust-item">
-              <div class="trust-icon">✓</div>
-              <div>
-                <div class="trust-title">Atendimento humano</div>
-                <div class="trust-sub">Consultoria de verdade</div>
-              </div>
-            </div>
-          </div>
         </div>
 
-        <div class="hero-right">
-          <div class="hero-video-card">
-            <div class="hero-video-top">
-              <div class="hero-dot"></div>
-              <div class="hero-dot"></div>
-              <div class="hero-dot"></div>
+        <div class="mobile-menu" id="mobile-menu">
 
-              <div class="hero-video-title">Apresentação</div>
+            <nav aria-label="Navegação mobile">
+                <a href="#inicio" class="mobile-nav-link">Início</a>
+                <a href="#consorcios" class="mobile-nav-link">Consórcios</a>
+                <a href="#como-funciona" class="mobile-nav-link">Como funciona</a>
+                <a href="#sobre" class="mobile-nav-link">Sobre</a>
+                <a href="#depoimentos" class="mobile-nav-link">Depoimentos</a>
+                <a href="#contato" class="mobile-nav-link">Contato</a>
+            </nav>
 
-              <button class="hero-sound-btn" id="toggleSound" type="button" aria-pressed="false">
-                Ativar som
-              </button>
+            <div class="mobile-menu-actions">
+                <a href="#contato" class="btn btn-dark">
+                    Simular agora
+                </a>
+
+                <a href="#" class="btn btn-outline whatsapp-link">
+                    <span class="whatsapp-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20.52 3.48A11.86 11.86 0 0 0 12.08 0C5.53 0 .2 5.33.2 11.89c0 2.1.55 4.15 1.6 5.96L.1 24l6.29-1.65a11.87 11.87 0 0 0 5.69 1.45h.01c6.55 0 11.88-5.33 11.88-11.89 0-3.17-1.23-6.15-3.45-8.43ZM12.09 21.8h-.01a9.86 9.86 0 0 1-5.02-1.38l-.36-.21-3.73.98 1-3.64-.23-.37a9.87 9.87 0 0 1-1.51-5.29C2.23 6.43 6.65 2 12.09 2c2.64 0 5.12 1.03 6.98 2.9a9.84 9.84 0 0 1 2.89 7c0 5.44-4.43 9.9-9.87 9.9Zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.64-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.21 5.09 4.5.71.31 1.26.5 1.69.64.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/>
+                        </svg>
+                    </span>
+                    WhatsApp
+                </a>
             </div>
 
-            <div class="hero-video-wrap">
-              <video
-                id="heroVideo"
-                class="hero-video"
-                autoplay
-                muted
-                loop
-                playsinline
-                preload="auto"
-              >
-                <source src="assets/video/hero.mp4" type="video/mp4" />
-                Seu navegador não suporta vídeo em HTML5.
-              </video>
-            </div>
-
-            <div class="hero-video-foot">
-              <div class="hero-video-hint">
-                <strong>CLIQUE EM ATIVAR SOM!!!</strong>.
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-    </section>
+    </header>
 
-    <section class="section" id="consorcios">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="badge">Consórcios</span>
-            <h2 class="section-title">Escolha seu objetivo</h2>
-            <p class="section-subtitle">Selecione uma categoria e solicite uma simulação personalizada.</p>
-          </div>
-          <a class="btn btn-outline hide-sm" href="#contato">Simular agora</a>
-        </div>
 
-        <div class="grid-cards">
-          <article class="card category-card" data-category="Automóveis">
-            <div class="card-media">
-              <img src="assets/img/consorcio-carros.png" alt="Consórcio de automóveis" loading="lazy">
+    <main>
+
+        <!-- Hero -->
+        <section class="hero" id="inicio">
+
+            <div class="hero-overlay"></div>
+
+            <div class="container hero-grid">
+
+                <div class="hero-content">
+
+                    <div class="eyebrow light">
+                        <span></span>
+                        HGM Investimentos
+                    </div>
+
+                    <h1>
+                        Consórcios inteligentes para conquistar patrimônio com planejamento.
+                    </h1>
+
+                    <p class="hero-text">
+                        Encontre soluções em consórcios para imóveis, automóveis,
+                        motos e veículos pesados com atendimento consultivo e
+                        planejamento personalizado.
+                    </p>
+
+                    <div class="hero-actions">
+
+                        <a href="#contato" class="btn btn-light">
+                            Quero simular
+                            <span>→</span>
+                        </a>
+
+                        <a href="#consorcios" class="btn btn-ghost-light">
+                            Ver opções
+                        </a>
+
+                    </div>
+
+                    <div class="hero-trust">
+
+                        <div>
+                            <strong>01</strong>
+                            <span>Atendimento consultivo</span>
+                        </div>
+
+                        <div>
+                            <strong>02</strong>
+                            <span>Planejamento personalizado</span>
+                        </div>
+
+                        <div>
+                            <strong>03</strong>
+                            <span>Processo transparente</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="hero-media">
+
+                    <div class="hero-video">
+
+                        <video
+                            id="hero-video"
+                            src="assets/video/hero.mp4"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                            preload="metadata"
+                        ></video>
+
+                        <div class="video-overlay"></div>
+
+                        <div class="video-caption">
+                            <span>HGM Investimentos</span>
+                            <strong>Planejamento que transforma objetivos em patrimônio.</strong>
+                        </div>
+
+                        <button
+                            class="video-sound"
+                            id="video-sound"
+                            type="button"
+                            aria-label="Ativar som do vídeo"
+                        >
+                            <span class="sound-muted">🔇</span>
+                            <span class="sound-active">🔊</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
             </div>
-            <div class="card-body">
-              <h3 class="card-title">Automóveis</h3>
-              <p class="card-text">Planejamento para conquistar seu carro com parcelas alinhadas ao seu orçamento.</p>
-              <button class="card-action" type="button">Simular</button>
-            </div>
-          </article>
+        </section>
 
-          <article class="card category-card" data-category="Imóveis">
-            <div class="card-media">
-              <img src="assets/img/consorcio-imoveis.png" alt="Consórcio de imóveis" loading="lazy">
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Imóveis</h3>
-              <p class="card-text">Construa patrimônio com estratégia e segurança. Ideal para compra e investimento.</p>
-              <button class="card-action" type="button">Simular</button>
-            </div>
-          </article>
 
-          <article class="card category-card" data-category="Motos">
-            <div class="card-media">
-              <img src="assets/img/foto_moto.png" alt="Consórcio de motos" loading="lazy">
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Motos</h3>
-              <p class="card-text">Uma forma inteligente de trocar ou conquistar sua moto com planejamento.</p>
-              <button class="card-action" type="button">Simular</button>
-            </div>
-          </article>
+        <!-- Consórcios -->
+        <section class="section section-light" id="consorcios">
 
-          <article class="card category-card" data-category="Pesados">
-            <div class="card-media">
-              <img src="assets/img/consorcio-pesados.png" alt="Consórcio de pesados" loading="lazy">
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">Pesados</h3>
-              <p class="card-text">Soluções para empresas e profissionais que buscam crescer com estrutura.</p>
-              <button class="card-action" type="button">Simular</button>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
+            <div class="container">
 
-    <section class="section" id="como-funciona">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="badge">Processo</span>
-            <h2 class="section-title">Como funciona</h2>
-            <p class="section-subtitle">Um caminho simples, do planejamento até a conquista.</p>
-          </div>
-        </div>
+                <div class="section-heading">
 
-        <div class="steps">
-          <div class="step">
-            <div class="step-num">01</div>
-            <div class="step-title">Defina seu objetivo</div>
-            <div class="step-text">Escolha a categoria e o valor de crédito ideal.</div>
-          </div>
+                    <div>
+                        <span class="eyebrow">
+                            Nossas soluções
+                        </span>
 
-          <div class="step">
-            <div class="step-num">02</div>
-            <div class="step-title">Escolha o plano</div>
-            <div class="step-text">Selecionamos prazo e parcela compatíveis com você.</div>
-          </div>
+                        <h2>
+                            Encontre o consórcio ideal para o seu objetivo.
+                        </h2>
+                    </div>
 
-          <div class="step">
-            <div class="step-num">03</div>
-            <div class="step-title">Assembleias</div>
-            <div class="step-text">Contemplação por sorteio e/ou lance.</div>
-          </div>
+                    <p>
+                        Trabalhamos com diferentes categorias para que você
+                        encontre uma estratégia alinhada ao seu momento e aos
+                        seus planos.
+                    </p>
 
-          <div class="step">
-            <div class="step-num">04</div>
-            <div class="step-title">Carta de crédito</div>
-            <div class="step-text">Compra do bem com poder de negociação à vista.</div>
-          </div>
-        </div>
+                </div>
 
-        <div class="note">
-          <strong>Importante:</strong> consórcio não é financiamento. A contemplação ocorre por sorteio e/ou lance.
-        </div>
-      </div>
-    </section>
 
-    <section class="section" id="sobre">
-      <div class="container">
-        <div class="about">
-          <div class="about-media">
-            <img src="assets/img/pessoa.png" alt="Consultor(a) HGM" loading="lazy">
-          </div>
+                <div class="category-grid">
 
-          <div class="about-body">
-            <span class="badge">Sobre</span>
-            <h2 class="section-title">Atendimento humano, consultivo e direto</h2>
-            <p class="section-subtitle">
-              A HGM Investimentos atua com foco em planejamento e clareza. O objetivo é orientar você para escolher um consórcio alinhado ao seu cenário, com transparência e segurança.
-            </p>
+                    <article class="category-card">
 
-            <div class="about-points">
-              <div class="about-point">✓ Simulação personalizada</div>
-              <div class="about-point">✓ Estratégia de contemplação</div>
-              <div class="about-point">✓ Acompanhamento no processo</div>
-              <div class="about-point">✓ Atendimento online</div>
-            </div>
+                        <div class="category-image">
+                            <img
+                                src="assets/img/consorcio-carros.png"
+                                alt="Consórcio de automóveis"
+                                loading="lazy"
+                            >
+                        </div>
 
-            <div class="about-cta">
-              <a class="btn btn-primary" href="#contato">Solicitar simulação</a>
-              <a class="btn btn-outline" id="btnWhatsappAbout" href="#" target="_blank" rel="noreferrer">Falar no WhatsApp</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+                        <div class="category-content">
 
-    <section class="section section-soft" id="depoimentos">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="badge">Prova social</span>
-            <h2 class="section-title">Depoimentos</h2>
-            <p class="section-subtitle">Feedback real de quem buscou planejamento com consórcio.</p>
-          </div>
+                            <span class="category-number">01</span>
 
-          <div class="slider-controls">
-            <button class="icon-btn" id="prevTestimonial" type="button" aria-label="Anterior">←</button>
-            <button class="icon-btn" id="nextTestimonial" type="button" aria-label="Próximo">→</button>
-          </div>
-        </div>
+                            <h3>Automóveis</h3>
 
-        <div class="testimonial card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text" id="testimonialText">
-            “Atendimento excelente. Explicou tudo com clareza e me ajudou a escolher o plano ideal.”
-          </p>
-          <div class="testimonial-author" id="testimonialAuthor">— Cliente, SP</div>
-        </div>
-      </div>
-    </section>
+                            <p>
+                                Planeje a aquisição do seu próximo carro
+                                através do sistema de consórcio.
+                            </p>
 
-    <section class="section" id="contato">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <span class="badge">Simulação</span>
-            <h2 class="section-title">Solicite sua simulação</h2>
-            <p class="section-subtitle">Preencha os dados e você será direcionado ao WhatsApp com a mensagem pronta.</p>
-          </div>
-        </div>
+                            <button
+                                class="card-link simulate-card"
+                                type="button"
+                                data-category="Automóveis"
+                            >
+                                Simular
+                                <span>→</span>
+                            </button>
 
-        <div class="form-wrap card">
-          <form class="form" id="simulationForm" novalidate>
-            <div class="form-grid">
-              <div class="field">
-                <label for="nome">Nome</label>
-                <input id="nome" name="nome" type="text" placeholder="Seu nome completo" required />
-                <small class="error" data-error-for="nome"></small>
-              </div>
+                        </div>
 
-              <div class="field">
-                <label for="whatsapp">WhatsApp</label>
-                <input id="whatsapp" name="whatsapp" type="tel" placeholder="(DD) 9XXXX-XXXX" required />
-                <small class="error" data-error-for="whatsapp"></small>
-              </div>
+                    </article>
 
-              <div class="field">
-                <label for="email">E-mail</label>
-                <input id="email" name="email" type="email" placeholder="seuemail@dominio.com" required />
-                <small class="error" data-error-for="email"></small>
-              </div>
 
-              <div class="field">
-                <label for="categoria">Categoria</label>
-                <select id="categoria" name="categoria" required>
-                  <option value="">Selecione</option>
-                  <option>Automóveis</option>
-                  <option>Imóveis</option>
-                  <option>Motos</option>
-                  <option>Pesados</option>
-                </select>
-                <small class="error" data-error-for="categoria"></small>
-              </div>
+                    <article class="category-card">
 
-              <div class="field">
-                <label for="credito">Valor desejado (aprox.)</label>
-                <input id="credito" name="credito" type="text" placeholder="Ex.: 80.000" />
-              </div>
+                        <div class="category-image">
+                            <img
+                                src="assets/img/consorcio-imoveis.png"
+                                alt="Consórcio de imóveis"
+                                loading="lazy"
+                            >
+                        </div>
 
-              <div class="field">
-                <label for="mensagem">Mensagem (opcional)</label>
-                <input id="mensagem" name="mensagem" type="text" placeholder="Ex.: quero contemplar mais rápido" />
-              </div>
+                        <div class="category-content">
+
+                            <span class="category-number">02</span>
+
+                            <h3>Imóveis</h3>
+
+                            <p>
+                                Planeje a compra, construção ou realização
+                                do seu projeto imobiliário.
+                            </p>
+
+                            <button
+                                class="card-link simulate-card"
+                                type="button"
+                                data-category="Imóveis"
+                            >
+                                Simular
+                                <span>→</span>
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="category-card">
+
+                        <div class="category-image">
+                            <img
+                                src="assets/img/foto_moto.png"
+                                alt="Consórcio de motos"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="category-content">
+
+                            <span class="category-number">03</span>
+
+                            <h3>Motos</h3>
+
+                            <p>
+                                Uma alternativa planejada para conquistar
+                                sua próxima moto.
+                            </p>
+
+                            <button
+                                class="card-link simulate-card"
+                                type="button"
+                                data-category="Motos"
+                            >
+                                Simular
+                                <span>→</span>
+                            </button>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="category-card">
+
+                        <div class="category-image">
+                            <img
+                                src="assets/img/consorcio-pesados.png"
+                                alt="Consórcio de veículos pesados"
+                                loading="lazy"
+                            >
+                        </div>
+
+                        <div class="category-content">
+
+                            <span class="category-number">04</span>
+
+                            <h3>Pesados</h3>
+
+                            <p>
+                                Soluções para caminhões, máquinas e
+                                veículos de maior porte.
+                            </p>
+
+                            <button
+                                class="card-link simulate-card"
+                                type="button"
+                                data-category="Pesados"
+                            >
+                                Simular
+                                <span>→</span>
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
             </div>
 
-            <div class="form-actions">
-              <button class="btn btn-primary" type="submit">Enviar solicitação</button>
-              <p class="form-hint">Ao enviar, você será direcionado ao WhatsApp com sua mensagem pronta.</p>
-              <div class="form-success" id="formSuccess" role="status" aria-live="polite"></div>
+        </section>
+
+
+        <!-- Como funciona -->
+        <section class="section section-dark" id="como-funciona">
+
+            <div class="container">
+
+                <div class="section-heading section-heading-light">
+
+                    <div>
+                        <span class="eyebrow light">
+                            Como funciona
+                        </span>
+
+                        <h2>
+                            Planejamento em cada etapa.
+                        </h2>
+                    </div>
+
+                    <p>
+                        O consórcio é uma modalidade de compra planejada.
+                        Nossa função é ajudar você a entender as opções e
+                        escolher uma estratégia adequada aos seus objetivos.
+                    </p>
+
+                </div>
+
+
+                <div class="steps-grid">
+
+                    <article class="step-card">
+
+                        <span>01</span>
+
+                        <h3>Defina seu objetivo</h3>
+
+                        <p>
+                            Identifique o que deseja conquistar e qual
+                            valor faz sentido para o seu planejamento.
+                        </p>
+
+                    </article>
+
+
+                    <article class="step-card">
+
+                        <span>02</span>
+
+                        <h3>Escolha o plano</h3>
+
+                        <p>
+                            Avalie as possibilidades disponíveis e encontre
+                            uma opção compatível com seu planejamento.
+                        </p>
+
+                    </article>
+
+
+                    <article class="step-card">
+
+                        <span>03</span>
+
+                        <h3>Acompanhe as assembleias</h3>
+
+                        <p>
+                            A contemplação pode acontecer por sorteio
+                            ou através de lance, conforme as regras do grupo.
+                        </p>
+
+                    </article>
+
+
+                    <article class="step-card">
+
+                        <span>04</span>
+
+                        <h3>Utilize sua carta</h3>
+
+                        <p>
+                            Após a contemplação e seguindo as regras do grupo,
+                            você poderá utilizar o crédito para seu objetivo.
+                        </p>
+
+                    </article>
+
+                </div>
+
+                <div class="section-note">
+                    <strong>Importante:</strong>
+                    consórcio não é financiamento. A contemplação ocorre
+                    por sorteio e/ou lance, conforme as regras do grupo.
+                </div>
+
             </div>
-          </form>
-        </div>
-      </div>
-    </section>
 
-    <footer class="footer" id="footer">
-      <div class="container footer-inner">
-        <div class="footer-col">
-          <div class="footer-title">HGM Investimentos</div>
-          <div class="footer-sub">Consórcios com planejamento e transparência.</div>
+        </section>
+
+
+        <!-- Sobre -->
+        <section class="section section-light" id="sobre">
+
+            <div class="container about-grid">
+
+                <div class="about-image">
+
+                    <img
+                        src="assets/img/pessoa.png"
+                        alt="Atendimento HGM Investimentos"
+                        loading="lazy"
+                    >
+
+                    <div class="about-image-label">
+                        <span>HGM</span>
+                        <strong>Atendimento humano</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="about-content">
+
+                    <span class="eyebrow">
+                        Sobre a HGM
+                    </span>
+
+                    <h2>
+                        Atendimento humano, consultivo e direto.
+                    </h2>
+
+                    <p>
+                        Na HGM Investimentos, o objetivo é entender o momento
+                        de cada cliente e apresentar possibilidades de
+                        consórcio de forma clara e objetiva.
+                    </p>
+
+                    <p>
+                        Mais do que apresentar uma parcela, buscamos construir
+                        um planejamento alinhado ao objetivo de cada pessoa.
+                    </p>
+
+
+                    <div class="about-list">
+
+                        <div>
+                            <span>01</span>
+                            <strong>Simulação personalizada</strong>
+                        </div>
+
+                        <div>
+                            <span>02</span>
+                            <strong>Estratégia de contemplação</strong>
+                        </div>
+
+                        <div>
+                            <span>03</span>
+                            <strong>Acompanhamento do processo</strong>
+                        </div>
+
+                        <div>
+                            <span>04</span>
+                            <strong>Atendimento online</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="about-actions">
+
+                        <a href="#contato" class="btn btn-dark">
+                            Quero conversar
+                            <span>→</span>
+                        </a>
+
+                        <a href="#como-funciona" class="text-link">
+                            Entenda como funciona
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Depoimentos -->
+        <section class="section testimonials-section" id="depoimentos">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="eyebrow">
+                            Depoimentos
+                        </span>
+
+                        <h2>
+                            Experiências de quem já passou pela HGM.
+                        </h2>
+                    </div>
+
+                    <div class="slider-controls">
+
+                        <button
+                            type="button"
+                            id="testimonial-prev"
+                            aria-label="Depoimento anterior"
+                        >
+                            ←
+                        </button>
+
+                        <button
+                            type="button"
+                            id="testimonial-next"
+                            aria-label="Próximo depoimento"
+                        >
+                            →
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="testimonial-slider">
+
+                    <article class="testimonial-card active">
+
+                        <div class="testimonial-stars">
+                            ★★★★★
+                        </div>
+
+                        <blockquote>
+                            "A equipe foi muito atenciosa e explicou todo
+                            o processo de forma clara. Me senti seguro
+                            durante a escolha do consórcio."
+                        </blockquote>
+
+                        <div class="testimonial-author">
+                            <span class="testimonial-avatar">C</span>
+
+                            <div>
+                                <strong>Cliente HGM</strong>
+                                <span>Consórcio de automóvel</span>
+                            </div>
+                        </div>
+
+                    </article>
+
+
+                    <article class="testimonial-card">
+
+                        <div class="testimonial-stars">
+                            ★★★★★
+                        </div>
+
+                        <blockquote>
+                            "Atendimento muito profissional e próximo.
+                            Todas as dúvidas foram respondidas antes
+                            de tomar minha decisão."
+                        </blockquote>
+
+                        <div class="testimonial-author">
+                            <span class="testimonial-avatar">M</span>
+
+                            <div>
+                                <strong>Cliente HGM</strong>
+                                <span>Consórcio de imóvel</span>
+                            </div>
+                        </div>
+
+                    </article>
+
+
+                    <article class="testimonial-card">
+
+                        <div class="testimonial-stars">
+                            ★★★★★
+                        </div>
+
+                        <blockquote>
+                            "Gostei principalmente da transparência
+                            durante a explicação das opções e do
+                            acompanhamento depois da contratação."
+                        </blockquote>
+
+                        <div class="testimonial-author">
+                            <span class="testimonial-avatar">R</span>
+
+                            <div>
+                                <strong>Cliente HGM</strong>
+                                <span>Consórcio de veículo</span>
+                            </div>
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <div class="testimonial-dots" id="testimonial-dots"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Contato -->
+        <section class="section contact-section" id="contato">
+
+            <div class="container contact-grid">
+
+                <div class="contact-intro">
+
+                    <span class="eyebrow light">
+                        Simulação
+                    </span>
+
+                    <h2>
+                        Vamos encontrar uma estratégia para o seu objetivo.
+                    </h2>
+
+                    <p>
+                        Preencha seus dados e fale com a HGM para entender
+                        as possibilidades disponíveis para o seu planejamento.
+                    </p>
+
+                    <div class="contact-points">
+
+                        <div>
+                            <span>01</span>
+                            <strong>Atendimento personalizado</strong>
+                        </div>
+
+                        <div>
+                            <span>02</span>
+                            <strong>Simulação sem compromisso</strong>
+                        </div>
+
+                        <div>
+                            <span>03</span>
+                            <strong>Contato direto pelo WhatsApp</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="contact-form-wrapper">
+
+                    <form id="simulation-form" class="contact-form">
+
+                        <div class="form-header">
+                            <span>Comece sua simulação</span>
+                            <h3>Conte-nos o que você procura.</h3>
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label for="nome">
+                                    Nome
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="nome"
+                                    name="nome"
+                                    placeholder="Seu nome"
+                                    autocomplete="name"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="whatsapp">
+                                    WhatsApp
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="whatsapp"
+                                    name="whatsapp"
+                                    placeholder="(00) 00000-0000"
+                                    autocomplete="tel"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="email">
+                                    E-mail
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="seuemail@email.com"
+                                    autocomplete="email"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="categoria">
+                                    Interesse
+                                </label>
+
+                                <select
+                                    id="categoria"
+                                    name="categoria"
+                                    required
+                                >
+                                    <option value="" selected disabled>
+                                        Selecione uma opção
+                                    </option>
+
+                                    <option value="Automóveis">
+                                        Automóveis
+                                    </option>
+
+                                    <option value="Imóveis">
+                                        Imóveis
+                                    </option>
+
+                                    <option value="Motos">
+                                        Motos
+                                    </option>
+
+                                    <option value="Pesados">
+                                        Pesados
+                                    </option>
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group form-full">
+
+                                <label for="valor">
+                                    Valor desejado
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="valor"
+                                    name="valor"
+                                    placeholder="Ex.: R$ 150.000"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group form-full">
+
+                                <label for="mensagem">
+                                    Mensagem
+                                </label>
+
+                                <textarea
+                                    id="mensagem"
+                                    name="mensagem"
+                                    rows="4"
+                                    placeholder="Conte um pouco sobre seu objetivo..."
+                                ></textarea>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="btn btn-dark btn-submit"
+                        >
+                            Enviar pelo WhatsApp
+                            <span>→</span>
+                        </button>
+
+                        <p class="form-disclaimer">
+                            Ao enviar, você será direcionado para o WhatsApp
+                            para continuar o atendimento.
+                        </p>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <div class="container footer-main">
+
+            <div class="footer-brand">
+
+                <img
+                    src="assets/img/logo_preta.png"
+                    alt="HGM Investimentos"
+                >
+
+                <p>
+                    Consórcios inteligentes para conquistar patrimônio
+                    com planejamento.
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <span class="footer-title">
+                    Navegação
+                </span>
+
+                <a href="#inicio">Início</a>
+                <a href="#consorcios">Consórcios</a>
+                <a href="#como-funciona">Como funciona</a>
+                <a href="#sobre">Sobre</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <span class="footer-title">
+                    Atendimento
+                </span>
+
+                <a href="#depoimentos">Depoimentos</a>
+                <a href="#contato">Simulação</a>
+
+                <a
+                    href="#"
+                    class="whatsapp-link"
+                >
+                    WhatsApp
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <span class="footer-title">
+                    Redes sociais
+                </span>
+
+                <a
+                    href="#"
+                    class="instagram-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Instagram
+                </a>
+
+            </div>
+
         </div>
 
-        <div class="footer-col">
-          <div class="footer-heading">Links</div>
-          <a class="footer-link" href="#consorcios">Consórcios</a>
-          <a class="footer-link" href="#como-funciona">Como funciona</a>
-          <a class="footer-link" href="#depoimentos">Depoimentos</a>
-          <a class="footer-link" href="#contato">Simulação</a>
+
+        <div class="container footer-bottom">
+
+            <span>
+                © <span id="current-year"></span> HGM Investimentos.
+                Todos os direitos reservados.
+            </span>
+
+            <a href="#inicio" class="back-top">
+                Voltar ao topo ↑
+            </a>
+
         </div>
 
-        <div class="footer-col">
-          <div class="footer-heading">Contato</div>
-          <div class="footer-text">Atendimento: Online</div>
-          <a class="btn btn-outline footer-cta" id="btnWhatsappFooter" href="#" target="_blank" rel="noreferrer">Falar no WhatsApp</a>
-        </div>
-      </div>
-
-      <div class="container footer-bottom">
-        <div>© <span id="year"></span> HGM Investimentos. Todos os direitos reservados.</div>
-        <a class="to-top" href="#inicio" aria-label="Voltar ao topo">↑ Topo</a>
-      </div>
     </footer>
 
-    <a class="whatsapp-float" href="#" id="whatsappFloat" target="_blank" rel="noreferrer" aria-label="Falar no WhatsApp">
-      <span class="whatsapp-dot"></span>
-      WhatsApp
-    </a>
-  </main>
 
-  <script src="js/main.js"></script>
+    <!-- Botões flutuantes -->
+    <div class="floating-socials">
+
+        <a
+            href="#"
+            class="floating-social floating-instagram instagram-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram da HGM Investimentos"
+            data-tooltip="Instagram"
+        >
+            <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+            >
+                <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                <circle cx="12" cy="12" r="4.2"></circle>
+                <circle cx="17.4" cy="6.7" r="1"></circle>
+            </svg>
+        </a>
+
+
+        <a
+            href="#"
+            class="floating-social floating-whatsapp whatsapp-link"
+            aria-label="WhatsApp da HGM Investimentos"
+            data-tooltip="Fale conosco"
+        >
+            <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+            >
+                <path d="M20.52 3.48A11.86 11.86 0 0 0 12.08 0C5.53 0 .2 5.33.2 11.89c0 2.1.55 4.15 1.6 5.96L.1 24l6.29-1.65a11.87 11.87 0 0 0 5.69 1.45h.01c6.55 0 11.88-5.33 11.88-11.89 0-3.17-1.23-6.15-3.45-8.43ZM12.09 21.8h-.01a9.86 9.86 0 0 1-5.02-1.38l-.36-.21-3.73.98 1-3.64-.23-.37a9.87 9.87 0 0 1-1.51-5.29C2.23 6.43 6.65 2 12.09 2c2.64 0 5.12 1.03 6.98 2.9a9.84 9.84 0 0 1 2.89 7c0 5.44-4.43 9.9-9.87 9.9Zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.64-2.06-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.21 5.09 4.5.71.31 1.26.5 1.69.64.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/>
+            </svg>
+        </a>
+
+    </div>
+
+
+    <script src="js/main.js"></script>
+
 </body>
 </html>

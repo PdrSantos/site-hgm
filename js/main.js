@@ -1,309 +1,462 @@
 const WHATSAPP_NUMBER = "5518997207032";
-const DEFAULT_MSG = "Olá! Quero uma simulação de consórcio com a HGM Investimentos.";
 
-// ==================================================
-function buildWhatsAppLink(message) {
-  const msg = encodeURIComponent(message || DEFAULT_MSG);
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+// Coloque aqui o Instagram oficial da HGM.
+const INSTAGRAM_URL = "https://www.instagram.com/hgminvestimentos_/";
+
+const DEFAULT_MSG =
+    "Olá! Quero uma simulação de consórcio com a HGM Investimentos.";
+
+
+// WhatsApp
+function createWhatsAppUrl(message = DEFAULT_MSG) {
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
-function setWhatsAppLinks() {
-  const link = buildWhatsAppLink(DEFAULT_MSG);
-  const ids = [
-    "btnWhatsappTop",
-    "btnWhatsappMobile",
-    "btnWhatsappAbout",
-    "btnWhatsappFooter",
-    "whatsappFloat"
-  ];
-
-  ids.forEach((id) => {
-    const el = document.getElementById(id);
-    if (el) el.href = link;
-  });
+function setupWhatsAppLinks() {
+    document.querySelectorAll(".whatsapp-link").forEach((link) => {
+        link.href = createWhatsAppUrl();
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+    });
 }
 
-function setYear() {
-  const yearEl = document.getElementById("year");
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-  }
+
+// Instagram
+function setupInstagramLinks() {
+    document.querySelectorAll(".instagram-link").forEach((link) => {
+        link.href = INSTAGRAM_URL;
+    });
 }
 
-// ================== MENU MOBILE ==================
+
+// Header
+function setupHeader() {
+    const header = document.getElementById("site-header");
+
+    if (!header) {
+        return;
+    }
+
+    const updateHeader = () => {
+        header.classList.toggle("scrolled", window.scrollY > 30);
+    };
+
+    updateHeader();
+
+    window.addEventListener("scroll", updateHeader, {
+        passive: true
+    });
+}
+
+
+// Mobile menu
 function setupMobileMenu() {
-  const burger = document.getElementById("burger");
-  const menu = document.getElementById("mobileMenu");
+    const toggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("mobile-menu");
 
-  if (!burger || !menu) return;
-
-  const closeMenu = () => {
-    menu.classList.remove("open");
-    burger.setAttribute("aria-expanded", "false");
-    menu.setAttribute("aria-hidden", "true");
-  };
-
-  burger.addEventListener("click", () => {
-    const isOpen = menu.classList.toggle("open");
-    burger.setAttribute("aria-expanded", String(isOpen));
-    menu.setAttribute("aria-hidden", String(!isOpen));
-  });
-
-  menu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", closeMenu);
-  });
-
-  document.addEventListener("click", (event) => {
-    const target = event.target;
-    const clickedInside = menu.contains(target) || burger.contains(target);
-
-    if (!clickedInside && menu.classList.contains("open")) {
-      closeMenu();
+    if (!toggle || !menu) {
+        return;
     }
-  });
+
+    const closeMenu = () => {
+        toggle.classList.remove("active");
+        menu.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+        document.body.classList.remove("menu-open");
+    };
+
+    toggle.addEventListener("click", () => {
+        const isOpen = menu.classList.toggle("open");
+
+        toggle.classList.toggle("active", isOpen);
+        toggle.setAttribute("aria-expanded", String(isOpen));
+        document.body.classList.toggle("menu-open", isOpen);
+    });
+
+    menu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("click", (event) => {
+        if (
+            menu.classList.contains("open") &&
+            !menu.contains(event.target) &&
+            !toggle.contains(event.target)
+        ) {
+            closeMenu();
+        }
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            closeMenu();
+        }
+    });
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 900) {
+            closeMenu();
+        }
+    });
 }
 
-// ================== MENU ATIVO NO SCROLL ==================
-function setupActiveMenu() {
-  const links = Array.from(document.querySelectorAll(".nav-link"));
-  const sections = links
-    .map((link) => document.querySelector(link.getAttribute("href")))
-    .filter(Boolean);
 
-  if (!links.length || !sections.length) return;
+// Menu ativo
+function setupActiveNavigation() {
+    const sections = document.querySelectorAll("main section[id]");
+    const desktopLinks = document.querySelectorAll(".nav-link");
+    const mobileLinks = document.querySelectorAll(".mobile-nav-link");
 
-  const activate = (id) => {
-    links.forEach((link) => {
-      const href = link.getAttribute("href");
-      link.classList.toggle("active", href === `#${id}`);
-    });
-  };
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      const visibleEntry = entries
-        .filter((entry) => entry.isIntersecting)
-        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-      if (visibleEntry?.target?.id) {
-        activate(visibleEntry.target.id);
-      }
-    },
-    {
-      threshold: [0.2, 0.35, 0.5],
-      rootMargin: "-15% 0px -70% 0px"
+    if (!sections.length) {
+        return;
     }
-  );
 
-  sections.forEach((section) => observer.observe(section));
+    const allLinks = [...desktopLinks, ...mobileLinks];
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                const id = entry.target.id;
+
+                allLinks.forEach((link) => {
+                    link.classList.toggle(
+                        "active",
+                        link.getAttribute("href") === `#${id}`
+                    );
+                });
+            });
+        },
+        {
+            rootMargin: "-35% 0px -55% 0px",
+            threshold: 0
+        }
+    );
+
+    sections.forEach((section) => observer.observe(section));
 }
 
-// ================== CLICAR NO CARD -> PREENCHER CATEGORIA ==================
-function setupCategoryButtons() {
-  const cards = document.querySelectorAll(".category-card");
-  const categorySelect = document.getElementById("categoria");
 
-  if (!cards.length || !categorySelect) return;
+// Cards de simulação
+function setupSimulationCards() {
+    const cards = document.querySelectorAll(".simulate-card");
+    const category = document.getElementById("categoria");
+    const contact = document.getElementById("contato");
 
-  cards.forEach((card) => {
-    const button = card.querySelector(".card-action");
-    const category = card.getAttribute("data-category");
+    cards.forEach((card) => {
+        card.addEventListener("click", () => {
+            const selectedCategory = card.dataset.category;
 
-    if (!button || !category) return;
+            if (category && selectedCategory) {
+                category.value = selectedCategory;
+            }
 
-    button.addEventListener("click", () => {
-      categorySelect.value = category;
-      document.getElementById("contato")?.scrollIntoView({
-        behavior: "smooth"
-      });
+            if (contact) {
+                contact.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }
+        });
     });
-  });
 }
 
-// ================== DEPOIMENTOS ==================
+
+// Formulário
+function setupSimulationForm() {
+    const form = document.getElementById("simulation-form");
+
+    if (!form) {
+        return;
+    }
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const nome = document.getElementById("nome")?.value.trim() || "";
+        const whatsapp = document.getElementById("whatsapp")?.value.trim() || "";
+        const email = document.getElementById("email")?.value.trim() || "";
+        const categoria = document.getElementById("categoria")?.value || "";
+        const valor = document.getElementById("valor")?.value.trim() || "";
+        const mensagem = document.getElementById("mensagem")?.value.trim() || "";
+
+        if (!nome || !whatsapp || !email || !categoria) {
+            form.reportValidity();
+            return;
+        }
+
+        const text = [
+            "Olá! Quero fazer uma simulação com a HGM Investimentos.",
+            "",
+            `Nome: ${nome}`,
+            `WhatsApp: ${whatsapp}`,
+            `E-mail: ${email}`,
+            `Interesse: ${categoria}`,
+            `Valor desejado: ${valor || "Não informado"}`,
+            `Mensagem: ${mensagem || "Não informada"}`
+        ].join("\n");
+
+        window.open(
+            createWhatsAppUrl(text),
+            "_blank",
+            "noopener,noreferrer"
+        );
+    });
+}
+
+
+// Máscara do WhatsApp
+function setupPhoneMask() {
+    const input = document.getElementById("whatsapp");
+
+    if (!input) {
+        return;
+    }
+
+    input.addEventListener("input", () => {
+        let value = input.value.replace(/\D/g, "");
+
+        if (value.length > 11) {
+            value = value.slice(0, 11);
+        }
+
+        if (value.length <= 10) {
+            value = value.replace(
+                /^(\d{2})(\d{4})(\d{0,4}).*/,
+                "($1) $2-$3"
+            );
+        } else {
+            value = value.replace(
+                /^(\d{2})(\d{5})(\d{0,4}).*/,
+                "($1) $2-$3"
+            );
+        }
+
+        input.value = value;
+    });
+}
+
+
+// Depoimentos
 function setupTestimonials() {
-  const prevBtn = document.getElementById("prevTestimonial");
-  const nextBtn = document.getElementById("nextTestimonial");
-  const textEl = document.getElementById("testimonialText");
-  const authorEl = document.getElementById("testimonialAuthor");
+    const cards = [...document.querySelectorAll(".testimonial-card")];
+    const dotsContainer = document.getElementById("testimonial-dots");
+    const previous = document.getElementById("testimonial-prev");
+    const next = document.getElementById("testimonial-next");
 
-  if (!prevBtn || !nextBtn || !textEl || !authorEl) return;
-
-  const testimonials = [
-    {
-      text: "“Atendimento excelente. Explicou tudo com clareza e me ajudou a escolher o plano ideal.”",
-      author: "— Cliente, SP"
-    },
-    {
-      text: "“Transparência e acompanhamento. Me passou segurança para decidir.”",
-      author: "— Cliente, Interior SP"
-    },
-    {
-      text: "“Simulação rápida e bem explicada. Recomendo para quem quer planejar.”",
-      author: "— Cliente, MG"
+    if (!cards.length) {
+        return;
     }
-  ];
 
-  let currentIndex = 0;
+    let current = 0;
+    let interval;
 
-  const render = () => {
-    textEl.textContent = testimonials[currentIndex].text;
-    authorEl.textContent = testimonials[currentIndex].author;
-  };
+    cards.forEach((_, index) => {
+        const dot = document.createElement("button");
 
-  prevBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
-    render();
-  });
+        dot.type = "button";
+        dot.className = "testimonial-dot";
+        dot.setAttribute(
+            "aria-label",
+            `Mostrar depoimento ${index + 1}`
+        );
 
-  nextBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex + 1) % testimonials.length;
-    render();
-  });
+        dot.addEventListener("click", () => {
+            showTestimonial(index);
+            restartAutoPlay();
+        });
 
-  setInterval(() => {
-    currentIndex = (currentIndex + 1) % testimonials.length;
-    render();
-  }, 6500);
-}
-
-// ================== FORMULÁRIO -> WHATSAPP ==================
-function setupForm() {
-  const form = document.getElementById("simulationForm");
-  const successEl = document.getElementById("formSuccess");
-
-  if (!form) return;
-
-  const setError = (fieldName, message) => {
-    const errorEl = document.querySelector(`[data-error-for="${fieldName}"]`);
-    if (errorEl) errorEl.textContent = message || "";
-  };
-
-  const clearErrors = () => {
-    ["nome", "whatsapp", "email", "categoria"].forEach((field) => {
-      setError(field, "");
+        dotsContainer?.appendChild(dot);
     });
 
-    if (successEl) successEl.textContent = "";
-  };
+    const dots = dotsContainer
+        ? [...dotsContainer.querySelectorAll(".testimonial-dot")]
+        : [];
 
-  const isEmailValid = (value) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
-  };
+    function showTestimonial(index) {
+        current = (index + cards.length) % cards.length;
 
-  const onlyDigits = (value) => {
-    return (value || "").replace(/\D/g, "");
-  };
+        cards.forEach((card, cardIndex) => {
+            card.classList.toggle(
+                "active",
+                cardIndex === current
+            );
+        });
 
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    clearErrors();
-
-    const formData = new FormData(form);
-
-    const nome = (formData.get("nome") || "").toString().trim();
-    const whatsapp = (formData.get("whatsapp") || "").toString().trim();
-    const email = (formData.get("email") || "").toString().trim();
-    const categoria = (formData.get("categoria") || "").toString().trim();
-    const credito = (formData.get("credito") || "").toString().trim();
-    const mensagem = (formData.get("mensagem") || "").toString().trim();
-
-    let isValid = true;
-
-    if (nome.length < 3) {
-      setError("nome", "Informe seu nome completo.");
-      isValid = false;
+        dots.forEach((dot, dotIndex) => {
+            dot.classList.toggle(
+                "active",
+                dotIndex === current
+            );
+        });
     }
 
-    if (onlyDigits(whatsapp).length < 10) {
-      setError("whatsapp", "Informe um WhatsApp válido com DDD.");
-      isValid = false;
+    function nextTestimonial() {
+        showTestimonial(current + 1);
     }
 
-    if (!isEmailValid(email)) {
-      setError("email", "Informe um e-mail válido.");
-      isValid = false;
+    function previousTestimonial() {
+        showTestimonial(current - 1);
     }
 
-    if (!categoria) {
-      setError("categoria", "Selecione uma categoria.");
-      isValid = false;
+    function startAutoPlay() {
+        interval = window.setInterval(
+            nextTestimonial,
+            6500
+        );
     }
 
-    if (!isValid) return;
-
-    const finalMessage =
-      `Olá! Quero uma simulação de consórcio com a HGM Investimentos.\n\n` +
-      `Nome: ${nome}\n` +
-      `WhatsApp: ${whatsapp}\n` +
-      `E-mail: ${email}\n` +
-      `Categoria: ${categoria}\n` +
-      (credito ? `Valor desejado: ${credito}\n` : "") +
-      (mensagem ? `Mensagem: ${mensagem}\n` : "");
-
-    if (successEl) {
-      successEl.textContent = "Perfeito! Abrindo WhatsApp…";
+    function stopAutoPlay() {
+        window.clearInterval(interval);
     }
 
-    window.open(buildWhatsAppLink(finalMessage), "_blank", "noopener,noreferrer");
+    function restartAutoPlay() {
+        stopAutoPlay();
+        startAutoPlay();
+    }
 
-    form.reset();
-  });
+    next?.addEventListener("click", () => {
+        nextTestimonial();
+        restartAutoPlay();
+    });
+
+    previous?.addEventListener("click", () => {
+        previousTestimonial();
+        restartAutoPlay();
+    });
+
+    const slider = document.querySelector(".testimonial-slider");
+
+    slider?.addEventListener("mouseenter", stopAutoPlay);
+    slider?.addEventListener("mouseleave", startAutoPlay);
+
+    slider?.addEventListener("touchstart", stopAutoPlay, {
+        passive: true
+    });
+
+    slider?.addEventListener("touchend", startAutoPlay, {
+        passive: true
+    });
+
+    showTestimonial(0);
+    startAutoPlay();
 }
 
-// ================== HERO VIDEO ==================
+
+// Vídeo do hero
 function setupHeroVideo() {
-  const video = document.getElementById("heroVideo");
-  const soundButton = document.getElementById("toggleSound");
+    const video = document.getElementById("hero-video");
+    const button = document.getElementById("video-sound");
 
-  if (!video || !soundButton) return;
-
-  // Garante autoplay sem som (padrão aceito pelos navegadores)
-  video.muted = true;
-  video.volume = 1;
-
-  const playPromise = video.play();
-  if (playPromise && typeof playPromise.catch === "function") {
-    playPromise.catch(() => {
-      // Alguns navegadores podem bloquear autoplay mesmo assim.
-      // Nesse caso, o usuário pode iniciar ao interagir.
-    });
-  }
-
-  soundButton.addEventListener("click", async () => {
-    const willEnableSound = video.muted === true;
-
-    if (willEnableSound) {
-      video.muted = false;
-      video.volume = 1;
-
-      soundButton.classList.add("is-on");
-      soundButton.textContent = "Som ligado";
-      soundButton.setAttribute("aria-pressed", "true");
-
-      try {
-        await video.play();
-      } catch (error) {
-        // Se o navegador bloquear, mantém sem quebrar a experiência
-      }
-    } else {
-      video.muted = true;
-
-      soundButton.classList.remove("is-on");
-      soundButton.textContent = "Ativar som";
-      soundButton.setAttribute("aria-pressed", "false");
+    if (!video || !button) {
+        return;
     }
-  });
+
+    const mutedIcon = button.querySelector(".sound-muted");
+    const activeIcon = button.querySelector(".sound-active");
+    const gestureEvents = ["click", "touchend", "keydown"];
+
+    function updateUI() {
+        const muted = video.muted;
+
+        if (mutedIcon) {
+            mutedIcon.style.display = muted ? "inline" : "none";
+        }
+
+        if (activeIcon) {
+            activeIcon.style.display = muted ? "none" : "inline";
+        }
+
+        button.setAttribute(
+            "aria-label",
+            muted ? "Ativar som do vídeo" : "Desativar som do vídeo"
+        );
+        button.setAttribute("aria-pressed", String(!muted));
+    }
+
+    async function enableSound() {
+        try {
+            video.muted = false;
+            video.volume = 1;
+            await video.play();
+        } catch (error) {
+            // Navegador bloqueou: volta para mutado e mantém o vídeo tocando
+            video.muted = true;
+            video.play().catch(() => {});
+        }
+
+        updateUI();
+        return !video.muted;
+    }
+
+    function onFirstGesture(event) {
+        // O botão de som cuida do próprio clique
+        if (button.contains(event.target)) {
+            return;
+        }
+
+        enableSound().then((enabled) => {
+            if (enabled) {
+                removeGestureListeners();
+            }
+        });
+    }
+
+    function removeGestureListeners() {
+        gestureEvents.forEach((name) => {
+            document.removeEventListener(name, onFirstGesture);
+        });
+    }
+
+    // Botão manual: liga/desliga e cancela o auto-ativar
+    button.addEventListener("click", async () => {
+        removeGestureListeners();
+
+        if (video.muted) {
+            await enableSound();
+        } else {
+            video.muted = true;
+            updateUI();
+        }
+    });
+
+    // 1) Tenta abrir com som
+    enableSound().then((enabled) => {
+        // 2) Se o navegador bloqueou, espera o primeiro clique/toque/tecla
+        if (!enabled) {
+            gestureEvents.forEach((name) => {
+                document.addEventListener(name, onFirstGesture, {
+                    passive: true
+                });
+            });
+        }
+    });
 }
 
-// ================== INICIALIZAÇÃO ==================
+// Ano do footer
+function setupCurrentYear() {
+    const year = document.getElementById("current-year");
+
+    if (year) {
+        year.textContent = new Date().getFullYear();
+    }
+}
+
+
+// Inicialização
 document.addEventListener("DOMContentLoaded", () => {
-  setYear();
-  setWhatsAppLinks();
-  setupMobileMenu();
-  setupActiveMenu();
-  setupCategoryButtons();
-  setupTestimonials();
-  setupForm();
-  setupHeroVideo();
+    setupWhatsAppLinks();
+    setupInstagramLinks();
+    setupHeader();
+    setupMobileMenu();
+    setupActiveNavigation();
+    setupSimulationCards();
+    setupSimulationForm();
+    setupPhoneMask();
+    setupTestimonials();
+    setupHeroVideo();
+    setupCurrentYear();
 });
