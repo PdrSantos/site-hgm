@@ -1147,15 +1147,12 @@ p {
     padding-bottom: 65px;
 }
 
-.footer-brand img {
+.footer-logo {
     display: block;
     width: 140px;
     height: auto;
     max-height: 60px;
     object-fit: contain;
-
-    /* Ajuste da logo para o fundo escuro */
-    filter: none;
 }
 
 .footer-brand p {
@@ -1163,6 +1160,22 @@ p {
     margin-top: 22px;
     color: rgba(255, 255, 255, 0.45);
     font-size: 12px;
+}
+
+.footer-brand .footer-quote {
+    max-width: 300px;
+    margin-top: 18px;
+    padding-left: 14px;
+    border-left: 2px solid rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.7);
+    font-family: "Manrope", sans-serif;
+    font-size: 12px;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.footer-column .footer-email {
+    overflow-wrap: anywhere;
 }
 
 .footer-column {

@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = "5518997207032";
+const WHATSAPP_NUMBER = "5518996522389";
 
 // Coloque aqui o Instagram oficial da HGM.
 const INSTAGRAM_URL = "https://www.instagram.com/hgminvestimentos_/";
